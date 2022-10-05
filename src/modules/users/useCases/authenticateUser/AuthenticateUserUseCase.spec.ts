@@ -7,6 +7,10 @@ let userRepositoryInMemory: InMemoryUsersRepository;
 let createUserUseCase: CreateUserUseCase;
 let authenticateUserUseCase: AuthenticateUserUseCase;
 
+jest.mock("jsonwebtoken", () => ({
+  sign: jest.mocked(() => "token")
+}));
+
 describe("Authenticate User", () => {
   beforeEach(() => {
     userRepositoryInMemory = new InMemoryUsersRepository();
