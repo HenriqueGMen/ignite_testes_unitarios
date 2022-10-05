@@ -72,7 +72,8 @@ describe("Get Statement", () => {
       }
 
       const createdUser = await createUserUseCase.execute(user);
-      const statement = await getStatementOperationUseCase.execute({ user_id: createdUser.id!, statement_id: "id statement" });
+
+      await getStatementOperationUseCase.execute({ user_id: createdUser.id!, statement_id: "id statement" });
     }).rejects.toBeInstanceOf(GetStatementOperationError.StatementNotFound);
   });
 });
